@@ -4,16 +4,126 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Best Friend Console</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+
+    #console {
+      min-height: 80vh;
+    }
+
+    #input-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    #user-input {
+      background: black;
+      border: none;
+      color: limegreen;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      flex-grow: 1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    ::selection {
+      background: limegreen;
+      color: black;
+    }
+  </style>
 </head>
 <body>
-  <div id="terminal">
-    <pre id="output"></pre>
-    <div id="input-line">
-      <span id="prompt">👉 Do you wanna hear something paglachoda? (yes/no): </span>
-      <input type="text" id="user-input" autocomplete="off" />
-    </div>
+  <div id="console"></div>
+  <div id="input-container" class="hidden">
+    👉 Do you wanna hear something paglachoda? (yes/no): 
+    <input type="text" id="user-input" autocomplete="off" />
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    const consoleEl = document.getElementById('console');
+    const inputContainer = document.getElementById('input-container');
+    const userInput = document.getElementById('user-input');
+
+    let delay = 40; // typing delay
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeWriter(text, speed = delay) {
+      for (let i = 0; i < text.length; i++) {
+        consoleEl.innerHTML += text[i];
+        window.scrollTo(0, document.body.scrollHeight);
+        await sleep(speed);
+      }
+    }
+
+    async function main() {
+      await typeWriter("Launching Best Friend Console for Shourja Bhattacharya...\n", 40);
+      await sleep(1000);
+
+      await typeWriter("\n🤝 Hey Shourja! It's me, your brother from another mother.\n", 50);
+      await typeWriter("I know you're upset... and trust me, I hate that.\n", 50);
+      await typeWriter("So I made this little program for you. Just for YOU. 💻\n\n", 50);
+
+      askAgain();
+    }
+
+    function askAgain() {
+      inputContainer.classList.remove('hidden');
+      userInput.focus();
+
+      userInput.addEventListener('keydown', async function handler(e) {
+        if (e.key === 'Enter') {
+          const value = userInput.value.trim().toLowerCase();
+          userInput.value = '';
+          inputContainer.classList.add('hidden');
+          consoleEl.innerHTML += `👉 Do you wanna hear something paglachoda? (yes/no): ${value}\n`;
+
+          userInput.removeEventListener('keydown', handler);
+
+          if (value === 'yes') {
+            await typeWriter("\nAlright bro, listen up...\n", 50);
+            await sleep(1000);
+            await typeWriter("\n💬 I know Sagorika messed up somewhere. She said or did something wrong.\n", 50);
+            await typeWriter("But you're not just a friend. You're my brother from another mother.\n", 50);
+            await typeWriter("And real brothers fight, but real ones also make up.\n", 50);
+            await typeWriter("So here's a big, loud, unapologetically honest...\n", 50);
+
+            await typeWriter("\n🙏 I'M SORRY, BRO! 🙏\n", 100);
+            await sleep(1000);
+            await typeWriter("Can we put the past behind us and go back to being LEGENDS together? 😤\n\n", 50);
+            await typeWriter("💥 Team SODEPUR MANJI GANG — Unstoppable since day one! 💥\n", 50);
+            await typeWriter("\n\nPress Enter to exit...", 30);
+
+            document.addEventListener('keydown', function exitHandler(e) {
+              if (e.key === 'Enter') {
+                window.close();
+              }
+            });
+          } else {
+            await typeWriter("\n😒 Oyyy bro, really? NO? That's what you're going with?\n", 50);
+            await typeWriter("Bro don't be dramatic like a 90's Bengali serial villain 🤦‍♂️\n", 50);
+            await typeWriter("I'm gonna ask you ONE. MORE. TIME. 😤\n\n", 50);
+            askAgain();
+          }
+        }
+      });
+    }
+
+    main();
+  </script>
 </body>
 </html>
