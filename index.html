@@ -76,7 +76,7 @@
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function typeWriter(text, speed = 40) {
+    async function typeWriter(text, speed = 80) {
       for (let char of text) {
         consoleEl.innerHTML += char;
         window.scrollTo(0, document.body.scrollHeight);
@@ -85,7 +85,7 @@
     }
 
     async function askQuestion() {
-      await typeWriter("👉 Do you wanna hear something paglachoda? (yes/no): ", 50);
+      await typeWriter("👉 Do you wanna hear something paglachoda? (yes/no): ", 80);
       inputLine.style.display = "block";
       userInput.focus();
 
@@ -104,35 +104,35 @@
     }
 
     async function main() {
-      await typeWriter("Launching Best Friend Console for Shourja Bhattacharya...\n", 40);
+      await typeWriter("Launching Best Friend Console for Shourja Bhattacharya...\n", 70);
       await sleep(1000);
-      await typeWriter("\n🤝 Hey Shourja! It's me COW, your brother from another mother.\n", 50);
-      await typeWriter("I know you're upset... and trust me, I hate that.\n", 50);
-      await typeWriter("So I made this little program for you to cool down. 💻\n\n", 50);
+      await typeWriter("\n🤝 Hey Shourja! It's me COW, your brother from another mother.\n", 80);
+      await typeWriter("I know you're upset... and trust me, I hate that.\n", 80);
+      await typeWriter("So I made this little program for you to cool down. 💻\n\n", 80);
 
       while (true) {
         const answer = await askQuestion();
 
         if (answer === "yes") {
-          await typeWriter("\nAlright bro, listen up...\n", 50);
+          await typeWriter("\nAlright bro, listen up...\n", 80);
           await sleep(1000);
-          await typeWriter("\n💬 I know Sagorika messed up somewhere. She said or did something wrong using my whatsapp.\n", 50);
-          await typeWriter("But you're not just a friend. You're my brother from another mother.\n", 50);
-          await typeWriter("And real brothers fight, but real ones also make up.\n", 50);
-          await typeWriter("So here's a big, loud, unapologetically honest...\n", 50);
-          await typeWriter("\n🙏 I'M SORRY, BRO! for me and my sagorika🙏\n", 100);
+          await typeWriter("\n💬 I know Sagorika messed up somewhere. She said or did something wrong using my whatsapp.\n", 80);
+          await typeWriter("But you're not just a friend. You're my brother from another mother.\n", 80);
+          await typeWriter("And real brothers fight, but real ones also make up.\n", 80);
+          await typeWriter("So here's a big, loud, unapologetically honest...\n", 80);
+          await typeWriter("\n🙏 I'M SORRY, BRO! for me and my sagorika🙏\n", 120);
           await sleep(1000);
-          await typeWriter("Can we put the past behind us and go back to being LEGENDS together? 😤\n\n", 50);
-          await typeWriter("💥 Team SODEPUR MANJI GANG — Unstoppable since day one! 💥\n", 50);
-          await typeWriter("\n\nPress Enter to exit...", 30);
+          await typeWriter("Can we put the past behind us and go back to being LEGENDS together? 😤\n\n", 80);
+          await typeWriter("💥 Team SODEPUR MANJI GANG — Unstoppable since day one! 💥\n", 80);
+          await typeWriter("\n\nPress Enter to exit...", 60);
           document.addEventListener("keydown", function exitListener(e) {
             if (e.key === "Enter") window.close();
           });
           break;
         } else {
-          await typeWriter("\n😒 Abe khajur!chodnamo korish nah! chupchap yes kor!\n", 50);
-          await typeWriter("Sala! tor jonno eto kichu korchi bal akhon emon bhao khele sagoika ke niye tor barite giye keliye asbo!🤦‍♂️\n", 50);
-          await typeWriter("I'm gonna ask you ONE. MORE. TIME. 😤\n\n", 50);
+          await typeWriter("\n😒 Abe khajur!chodnamo korish nah! chupchap yes kor!\n", 80);
+          await typeWriter("Sala! tor jonno eto kichu korchi bal akhon emon bhao khele sagoika ke niye tor barite giye keliye asbo!🤦‍♂️\n", 80);
+          await typeWriter("I'm gonna ask you ONE. MORE. TIME. 😤\n\n", 80);
         }
       }
     }
