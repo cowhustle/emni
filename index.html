@@ -30,6 +30,9 @@
       word-wrap: break-word;
       font-size: 14px;
       line-height: 1.5;
+      max-height: 90vh;            /* LIMIT HEIGHT */
+      overflow-y: auto;            /* ENABLE SCROLLBAR */
+      padding-right: 10px;         /* SPACE FOR SCROLLBAR */
     }
 
     input {
@@ -79,7 +82,7 @@
     async function typeWriter(text, speed = 80) {
       for (let char of text) {
         consoleEl.innerHTML += char;
-        window.scrollTo(0, document.body.scrollHeight);
+        consoleEl.scrollTop = consoleEl.scrollHeight; // Scrolls only inside console area
         await sleep(speed);
       }
     }
@@ -131,7 +134,7 @@
           break;
         } else {
           await typeWriter("\n😒 Abe khajur!chodnamo korish nah! chupchap yes kor!\n", 80);
-          await typeWriter("Sala! tor jonno eto kichu korchi bal akhon emon bhao khele sagoika ke niye tor barite giye keliye asbo!🤦‍♂️\n", 80);
+          await typeWriter("Sala! tor jonno eto kichu korchi bal akhon emon bhao khele sagorika ke niye tor barite giye keliye asbo!🤦‍♂️\n", 80);
           await typeWriter("I'm gonna ask you ONE. MORE. TIME. 😤\n\n", 80);
         }
       }
